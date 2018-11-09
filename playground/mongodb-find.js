@@ -3,7 +3,8 @@ const {MongoClient, ObjectId} = require('mongodb'); //pull off MongoClient and O
 
 var obj = new ObjectId();
 console.log(obj);
-
+//object id is not a string, its type is object id
+//Use Object Id construtor to have value
 
 // mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/rotten-potatoes');
 MongoClient.connect('mongodb://localhost:27017/ToDoApp', (err, client) => {
@@ -13,35 +14,13 @@ MongoClient.connect('mongodb://localhost:27017/ToDoApp', (err, client) => {
     console.log('Connected to Mongodb Server')
     const db = client.db('ToDoApp')
 
-    // db.collection('Todos').insertOne({
-    //     text: 'Something to do',
-    //     completed: false
-    //
-    // }, (err, result) => {
-    //     if(err){
-    //         return console.log("Unable to insert todo", err);
-    //     }
-    //     console.log(JSON.stringify(result.ops, undefined, 2)) //ops stores all the docs that were inserted
-    // }) //new document to collection
+    db.collection('Todos').find().count().then((count) => {
+        console.log(`Todos: ${count}`);
+    }, (err) => {
+        console.log('Unable to fetch todos', err);
+    });
 
-
-    db.collection('Users').insertOne({
-
-        name: 'Nathan Pillai',
-        age: 19,
-        location: 'San Fran'
-    }, (err, result) => {
-        if (err){
-            return console.log('Unable to create new User')
-        }
-        console.log(JSON.stringify(result.ops[0]._id.getTimestamp(), undefined, 2))
-    })
-
-
-
-
-
-    client.close();
+    // client.close();
 });
 
 

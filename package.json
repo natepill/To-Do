@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/natepill/To-Do/issues"
   },
-  "homepage": "https://github.com/natepill/To-Do#readme"
+  "homepage": "https://github.com/natepill/To-Do#readme",
+  "dependencies": {
+    "mongodb": "^2.2.5"
+  }
 }

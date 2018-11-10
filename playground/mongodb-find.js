@@ -3,6 +3,7 @@ const {MongoClient, ObjectId} = require('mongodb'); //pull off MongoClient and O
 
 var obj = new ObjectId();
 console.log(obj);
+
 //object id is not a string, its type is object id
 //Use Object Id construtor to have value
 
@@ -14,11 +15,19 @@ MongoClient.connect('mongodb://localhost:27017/ToDoApp', (err, client) => {
     console.log('Connected to Mongodb Server')
     const db = client.db('ToDoApp')
 
-    db.collection('Todos').find().count().then((count) => {
-        console.log(`Todos: ${count}`);
+    // db.collection('Todos').find().count().then((count) => {
+    //     console.log(`Todos: ${count}`);
+    // }, (err) => {
+    //     console.log('Unable to fetch todos', err);
+    // });
+
+    db.collection('Users').find({name: 'Nathan Pillai'}).toArray().then((docs) => {
+        console.log(JSON.stringify(docs, undefined, 2));
     }, (err) => {
-        console.log('Unable to fetch todos', err);
-    });
+        if (err){
+            return console.log("Person could not be found");
+        }
+    })
 
     // client.close();
 });

@@ -1,8 +1,7 @@
 // const MongoClient = require('mongodb').MongoClient; //same as line below (object destrucutring)
 const {MongoClient, ObjectId} = require('mongodb'); //pull off MongoClient and ObjectId from Mongodb
 
-var obj = new ObjectId();
-console.log(obj);
+
 
 
 // mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/rotten-potatoes');

@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/natepill/To-Do#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
     "mongodb": "^2.2.5",
-    "mongoose": "^5.3.11"
+    "mongoose": "^5.3.13"
   }
 }
